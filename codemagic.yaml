@@ -31,3 +31,37 @@ workflows:
     artifacts:
       - build/ipa/ChienBinhVegeta-unsigned.ipa
       - /tmp/xcodebuild_logs/*.log
+
+  vegeta-ios-signed:
+    name: ChienBinhVegeta iOS signed IPA (Ad Hoc)
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    environment:
+      xcode: 16.4.x
+      ios_signing:
+        distribution_type: ad_hoc
+        bundle_identifier: com.DefaultCompany.DragonBoy9
+      vars:
+        XCODE_PROJECT: Unity-iPhone.xcodeproj
+        XCODE_SCHEME: Unity-iPhone
+    scripts:
+      - name: Initialize Git LFS
+        script: |
+          git lfs install --skip-smudge
+          git lfs pull --include="Libraries/libiPhone-lib.a"
+      - name: Prepare Unity IL2CPP
+        script: |
+          set -euo pipefail
+          cd "$CM_BUILD_DIR"
+          chmod +x Il2CppOutputProject/IL2CPP/build/deploy_*/il2cpp
+          find Il2CppOutputProject/IL2CPP/build -name bee_backend -type f -exec chmod +x {} \;
+      - name: Apply Ad Hoc signing profiles
+        script: xcode-project use-profiles --project "$CM_BUILD_DIR/$XCODE_PROJECT"
+      - name: Archive and export signed IPA
+        script: |
+          xcode-project build-ipa \
+            --project "$CM_BUILD_DIR/$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
