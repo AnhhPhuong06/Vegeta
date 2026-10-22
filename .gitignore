@@ -1,0 +1,19 @@
+# Signing credentials stay local.
+RAKUTEN SECURITIES,INC/
+*.p12
+*.pfx
+*.mobileprovision
+*.key
+*.pem
+.env
+.env.*
+
+# Local build output and Xcode user settings.
+/build/
+/output/
+/DerivedData/
+*.ipa
+*.xcarchive/
+xcuserdata/
+*.xcuserstate
+.DS_Store
