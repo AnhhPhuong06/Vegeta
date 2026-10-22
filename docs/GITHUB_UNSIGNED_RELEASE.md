@@ -8,4 +8,4 @@ Vào **Actions → Build and release unsigned iOS IPA → Run workflow**. Sau kh
 
 `https://github.com/AnhhPhuong06/Vegeta/releases/latest/download/ChienBinhVegeta-unsigned.ipa`
 
-IPA unsigned không thể cài trực tiếp trên iPhone. Hãy tự ký bằng Apple Developer team của bạn trước khi cài, dùng bundle ID `com.DefaultCompany.DragonBoy9` và profile tương ứng.
+IPA unsigned không thể cài trực tiếp trên iPhone. Hãy tự ký bằng Apple Developer team của bạn trước khi cài, dùng bundle ID `com.anhhphuong06.vegeta` và profile tương ứng.
