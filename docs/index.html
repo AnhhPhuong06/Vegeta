@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080d17">
   <meta name="color-scheme" content="dark">
-  <meta name="description" content="Build IPA chưa ký cho iPhone bằng Codemagic. Không cần chứng chỉ ký hoặc provisioning profile để tạo bản build.">
+  <meta name="description" content="Tải IPA unsigned của Chiến Binh Vegeta từ GitHub Releases rồi tự ký bằng tài khoản Apple Developer của bạn.">
   <meta property="og:title" content="Chiến Binh Vegeta · iOS">
   <meta property="og:image" content="https://anhhphuong06.github.io/Vegeta/assets/vegeta.png">
-  <meta property="og:description" content="Sẵn sàng nhập cuộc. Build iOS unsigned IPA cùng Codemagic.">
-  <title>Chiến Binh Vegeta — iOS Unsigned Build</title>
+  <meta property="og:description" content="Sẵn sàng nhập cuộc. Tải IPA unsigned và tự ký để cài trên iPhone.">
+  <title>Chiến Binh Vegeta — iOS IPA</title>
   <link rel="icon" href="assets/app-icon.png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
   <link rel="stylesheet" href="style.css">
@@ -35,12 +35,12 @@
           <div class="release-label"><span class="status-dot"></span> iOS BUILD · UNSIGNED <span class="release-version">V1.0</span></div>
           <h1 id="hero-title"><span class="title-prefix">CHIẾN BINH</span><span class="title-main">VEGETA<span class="title-period">.</span></span></h1>
           <p class="hero-tagline">Sẵn sàng nhập cuộc.</p>
-          <p class="hero-description">Tạo IPA iOS cho Chiến Binh Vegeta trên Codemagic. Tải artifact từ build khi hoàn tất.</p>
+          <p class="hero-description">Tải IPA iOS unsigned từ GitHub Releases. Tự ký bằng Apple Developer team của bạn trước khi cài.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="https://codemagic.io/apps"><svg aria-hidden="true"><use href="#download"/></svg>Build trên Codemagic<svg class="button-arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
-            <a class="button button-secondary" href="https://github.com/AnhhPhuong06/Vegeta"><svg aria-hidden="true"><use href="#arrow"/></svg>Mã nguồn</a>
+            <a class="button button-primary" href="https://github.com/AnhhPhuong06/Vegeta/releases/latest/download/ChienBinhVegeta-unsigned.ipa"><svg aria-hidden="true"><use href="#download"/></svg>Tải IPA unsigned<svg class="button-arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
+            <a class="button button-secondary" href="https://github.com/AnhhPhuong06/Vegeta/actions/workflows/ios-unsigned-release.yml"><svg aria-hidden="true"><use href="#arrow"/></svg>Build mới</a>
           </div>
-          <p class="safari-note"><svg aria-hidden="true"><use href="#shield"/></svg>Không cần certificate để build <span>·</span> Tải IPA từ Artifacts</p>
+          <p class="safari-note"><svg aria-hidden="true"><use href="#shield"/></svg>GitHub Release công khai <span>·</span> Cần tự ký để cài</p>
         </div>
         <div class="hero-art" aria-label="Hình đại diện Chiến Binh Vegeta">
           <div class="art-grid" aria-hidden="true"></div>
@@ -59,26 +59,26 @@
         <div><span class="spec-label">TRẠNG THÁI</span><strong class="unsigned-status"><span class="status-dot"></span>Chưa ký</strong></div>
       </section>
       <section class="guide section-block" id="huong-dan" aria-labelledby="guide-title">
-        <div class="section-heading"><div><span class="eyebrow">TẠO IPA CÙNG CODEMAGIC</span><h2 id="guide-title">Ba bước để build.</h2></div><span class="section-caption">Không cần certificate để build</span></div>
+        <div class="section-heading"><div><span class="eyebrow">TẢI VÀ TỰ KÝ</span><h2 id="guide-title">Ba bước để cài.</h2></div><span class="section-caption">Không cần secrets để build</span></div>
         <div class="steps">
-          <article class="step"><div class="step-top"><span class="step-number">01</span><svg aria-hidden="true"><use href="#phone"/></svg></div><h3>Kết nối repo GitHub</h3><p>Mở Codemagic và thêm repo <strong>AnhhPhuong06/Vegeta</strong> vào tài khoản của bạn.</p></article>
-          <article class="step"><div class="step-top"><span class="step-number">02</span><svg aria-hidden="true"><use href="#shield"/></svg></div><h3>Chạy workflow iOS</h3><p>Chọn workflow <strong>ChienBinhVegeta iOS unsigned IPA</strong> rồi nhấn Start new build.</p></article>
-          <article class="step"><div class="step-top"><span class="step-number">03</span><svg aria-hidden="true"><use href="#arrow"/></svg></div><h3>Tải IPA trong Artifacts</h3><p>Mở build hoàn tất và tải <strong>ChienBinhVegeta-unsigned.ipa</strong> từ mục Artifacts.</p></article>
+          <article class="step"><div class="step-top"><span class="step-number">01</span><svg aria-hidden="true"><use href="#phone"/></svg></div><h3>Tải IPA unsigned</h3><p>Tải <strong>ChienBinhVegeta-unsigned.ipa</strong> từ GitHub Releases.</p></article>
+          <article class="step"><div class="step-top"><span class="step-number">02</span><svg aria-hidden="true"><use href="#shield"/></svg></div><h3>Tự ký ứng dụng</h3><p>Dùng Apple Developer team và provisioning profile khớp bundle ID <strong>com.DefaultCompany.DragonBoy9</strong>.</p></article>
+          <article class="step"><div class="step-top"><span class="step-number">03</span><svg aria-hidden="true"><use href="#arrow"/></svg></div><h3>Cài lên iPhone</h3><p>Sau khi ký thành công, cài IPA bằng công cụ phân phối phù hợp với profile của bạn.</p></article>
         </div>
       </section>
       <aside class="certificate-note" aria-label="Thông tin IPA chưa ký"><svg aria-hidden="true"><use href="#shield"/></svg><div><strong>IPA chưa ký</strong><p>Build này không kèm certificate hoặc provisioning profile. Muốn cài lên iPhone, hãy ký ứng dụng bằng Apple Developer team của bạn và profile khớp với bundle ID.</p></div><a class="certificate-label" href="https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices" target="_blank" rel="noopener">APPLE DOCS ↗</a></aside>
       <section class="faq section-block" aria-labelledby="faq-title">
-        <div class="faq-intro"><span class="eyebrow">CẦN THÊM THÔNG TIN?</span><h2 id="faq-title">Giải đáp nhanh.</h2><p>Build trên Codemagic và dùng IPA chưa ký.</p></div>
+        <div class="faq-intro"><span class="eyebrow">CẦN THÊM THÔNG TIN?</span><h2 id="faq-title">Giải đáp nhanh.</h2><p>Tải IPA unsigned từ GitHub và tự ký trước khi cài.</p></div>
         <div class="faq-items">
-          <details><summary>Tôi tải file IPA ở đâu?<svg aria-hidden="true"><use href="#plus"/></svg></summary><p>Sau khi workflow hoàn tất trong Codemagic, mở build và tải <strong>ChienBinhVegeta-unsigned.ipa</strong> trong phần Artifacts.</p></details>
+          <details><summary>Tôi tải file IPA ở đâu?<svg aria-hidden="true"><use href="#plus"/></svg></summary><p>Tải <strong>ChienBinhVegeta-unsigned.ipa</strong> tại <a href="https://github.com/AnhhPhuong06/Vegeta/releases/latest">GitHub Releases</a>.</p></details>
           <details><summary>IPA chưa ký có cài trực tiếp lên iPhone được không?<svg aria-hidden="true"><use href="#plus"/></svg></summary><p>Chưa được. iPhone cần ứng dụng có chữ ký hợp lệ. Hãy ký bằng Apple Developer team và provisioning profile phù hợp trước khi cài.</p></details>
-          <details><summary>Có cần certificate trên Codemagic không?<svg aria-hidden="true"><use href="#plus"/></svg></summary><p>Không. Workflow này tải Git LFS, build cho thiết bị iOS và đóng gói IPA với code signing tắt. Chứng chỉ chỉ cần khi bạn muốn cài hoặc phát hành ứng dụng.</p></details>
+          <details><summary>Có cần certificate để build không?<svg aria-hidden="true"><use href="#plus"/></svg></summary><p>Không. GitHub Actions đóng gói IPA với code signing tắt. Bạn cần chữ ký và profile hợp lệ của mình để cài ứng dụng lên iPhone.</p></details>
         </div>
       </section>
     </main>
-    <footer class="site-footer"><a class="footer-brand" href="#">VEGETA<span>iOS EDITION</span></a><p>Chiến Binh Vegeta <span>·</span> IPA chưa ký</p><a href="https://github.com/AnhhPhuong06/Vegeta" target="_blank" rel="noopener">Xem mã nguồn <span aria-hidden="true">↗</span></a></footer>
+    <footer class="site-footer"><a class="footer-brand" href="#">VEGETA<span>iOS EDITION</span></a><p>Chiến Binh Vegeta <span>·</span> IPA unsigned</p><a href="https://github.com/AnhhPhuong06/Vegeta" target="_blank" rel="noopener">Xem mã nguồn <span aria-hidden="true">↗</span></a></footer>
   </div>
-  <div class="mobile-install" aria-label="Mở Codemagic"><div><img src="assets/app-icon.png" width="38" height="38" alt=""><span><strong>ChienBinhVegeta</strong><small>iOS · unsigned IPA</small></span></div><a class="button button-primary" href="https://codemagic.io/apps">Mở Codemagic<svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
+  <div class="mobile-install" aria-label="Tải IPA"><div><img src="assets/app-icon.png" width="38" height="38" alt=""><span><strong>ChienBinhVegeta</strong><small>iOS · unsigned IPA</small></span></div><a class="button button-primary" href="https://github.com/AnhhPhuong06/Vegeta/releases/latest/download/ChienBinhVegeta-unsigned.ipa">Tải IPA<svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
   <script src="app.js" defer></script>
 </body>
 </html>
