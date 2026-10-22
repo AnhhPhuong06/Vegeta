@@ -3,25 +3,82 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d17">
   <meta name="color-scheme" content="dark">
-  <title>Cài ChienBinhVegeta</title>
-  <style>
-    *{box-sizing:border-box}body{margin:0;background:#10141e;color:#eff4ff;font:16px/1.6 system-ui,sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px}main{width:100%;max-width:440px;padding:32px;border:1px solid #303b52;border-radius:24px;background:#192132}h1{font-size:28px;line-height:1.2;margin:12px 0}p{color:#b9c5dc}.tag{font-size:13px;color:#96e9bb}.button{display:block;text-align:center;text-decoration:none;border-radius:12px;padding:14px;font-weight:700;margin:12px 0;background:#9cef9c;color:#122116}.secondary{background:#28364e;color:#eff4ff}ol{padding-left:20px;color:#c4cfe2;font-size:14px}footer{border-top:1px solid #303b52;margin-top:24px;padding-top:16px;font-size:12px;color:#9eacc4}
-  </style>
+  <meta name="description" content="Build IPA chưa ký cho iPhone bằng Codemagic. Không cần chứng chỉ ký hoặc provisioning profile để tạo bản build.">
+  <meta property="og:title" content="Chiến Binh Vegeta · iOS">
+  <meta property="og:image" content="https://anhhphuong06.github.io/Vegeta/assets/vegeta.png">
+  <meta property="og:description" content="Sẵn sàng nhập cuộc. Build iOS unsigned IPA cùng Codemagic.">
+  <title>Chiến Binh Vegeta — iOS Unsigned Build</title>
+  <link rel="icon" href="assets/app-icon.png">
+  <link rel="apple-touch-icon" href="assets/app-icon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <span class="tag">iOS · Phiên bản 1.0</span>
-    <h1>ChienBinhVegeta</h1>
-    <p>Mở trang này bằng Safari trên iPhone để cài ứng dụng.</p>
-    <a class="button" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fanhhphuong06.github.io%2FVegeta%2Fmanifest.xml">Cài trực tiếp trên iPhone</a>
-    <a class="button secondary" href="https://github.com/AnhhPhuong06/Vegeta/releases/download/ios-20261022/ChienBinhVegeta-signed.ipa">Tải file IPA đã ký</a>
-    <ol>
-      <li>Chọn nút cài trực tiếp và xác nhận cài đặt.</li>
-      <li>Nếu máy yêu cầu, vào Cài đặt → Cài đặt chung → VPN &amp; Quản lý thiết bị, chọn chứng chỉ RAKUTEN SECURITIES,INC. và xác nhận tin cậy.</li>
-      <li>Mở ChienBinhVegeta từ màn hình chính.</li>
-    </ol>
-    <footer>Profile ký hết hạn ngày 05/11/2026. Chữ ký đã được kiểm tra khi build; việc cài đặt còn phụ thuộc trạng thái chứng chỉ trên thiết bị.</footer>
-  </main>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></symbol>
+    <symbol id="shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4m-3 14h2"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+  </svg>
+  <a class="skip-link" href="#main">Đến nội dung chính</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Vegeta, trang chủ"><img src="assets/app-icon.png" width="42" height="42" alt=""><span>VEGETA<span class="brand-edition">iOS EDITION</span></span></a>
+      <nav aria-label="Điều hướng chính"><a href="#huong-dan">Cách build</a><a href="https://github.com/AnhhPhuong06/Vegeta" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></nav>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <div class="release-label"><span class="status-dot"></span> iOS BUILD · UNSIGNED <span class="release-version">V1.0</span></div>
+          <h1 id="hero-title"><span class="title-prefix">CHIẾN BINH</span><span class="title-main">VEGETA<span class="title-period">.</span></span></h1>
+          <p class="hero-tagline">Sẵn sàng nhập cuộc.</p>
+          <p class="hero-description">Tạo IPA iOS cho Chiến Binh Vegeta trên Codemagic. Tải artifact từ build khi hoàn tất.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://codemagic.io/apps"><svg aria-hidden="true"><use href="#download"/></svg>Build trên Codemagic<svg class="button-arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
+            <a class="button button-secondary" href="https://github.com/AnhhPhuong06/Vegeta"><svg aria-hidden="true"><use href="#arrow"/></svg>Mã nguồn</a>
+          </div>
+          <p class="safari-note"><svg aria-hidden="true"><use href="#shield"/></svg>Không cần certificate để build <span>·</span> Tải IPA từ Artifacts</p>
+        </div>
+        <div class="hero-art" aria-label="Hình đại diện Chiến Binh Vegeta">
+          <div class="art-grid" aria-hidden="true"></div>
+          <span class="art-coordinate coordinate-top" aria-hidden="true">VGT / 01</span>
+          <span class="art-coordinate coordinate-bottom" aria-hidden="true">READY TO PLAY</span>
+          <div class="aura aura-outer" aria-hidden="true"></div><div class="aura aura-inner" aria-hidden="true"></div>
+          <div class="art-orbit" aria-hidden="true"><span></span></div>
+          <img class="character" src="assets/vegeta.png" width="1024" height="1024" alt="Vegeta tóc xanh với hào quang xanh lam" fetchpriority="high">
+          <div class="art-caption"><span class="art-caption-mark" aria-hidden="true">V</span><div><strong>ChienBinhVegeta</strong><span>Native iOS · ARM64</span></div><span class="verified-mark" title="Xcode build"><svg aria-hidden="true"><use href="#check"/></svg></span></div>
+        </div>
+      </section>
+      <section class="build-specs" aria-label="Thông tin bản phát hành">
+        <div><span class="spec-label">PHIÊN BẢN</span><strong>1.0 <span>/ iOS</span></strong></div>
+        <div><span class="spec-label">ĐỊNH DẠNG</span><strong>.ipa <span>/ Payload</span></strong></div>
+        <div><span class="spec-label">TƯƠNG THÍCH</span><strong>iOS 12.0<span> trở lên</span></strong></div>
+        <div><span class="spec-label">TRẠNG THÁI</span><strong class="unsigned-status"><span class="status-dot"></span>Chưa ký</strong></div>
+      </section>
+      <section class="guide section-block" id="huong-dan" aria-labelledby="guide-title">
+        <div class="section-heading"><div><span class="eyebrow">TẠO IPA CÙNG CODEMAGIC</span><h2 id="guide-title">Ba bước để build.</h2></div><span class="section-caption">Không cần certificate để build</span></div>
+        <div class="steps">
+          <article class="step"><div class="step-top"><span class="step-number">01</span><svg aria-hidden="true"><use href="#phone"/></svg></div><h3>Kết nối repo GitHub</h3><p>Mở Codemagic và thêm repo <strong>AnhhPhuong06/Vegeta</strong> vào tài khoản của bạn.</p></article>
+          <article class="step"><div class="step-top"><span class="step-number">02</span><svg aria-hidden="true"><use href="#shield"/></svg></div><h3>Chạy workflow iOS</h3><p>Chọn workflow <strong>ChienBinhVegeta iOS unsigned IPA</strong> rồi nhấn Start new build.</p></article>
+          <article class="step"><div class="step-top"><span class="step-number">03</span><svg aria-hidden="true"><use href="#arrow"/></svg></div><h3>Tải IPA trong Artifacts</h3><p>Mở build hoàn tất và tải <strong>ChienBinhVegeta-unsigned.ipa</strong> từ mục Artifacts.</p></article>
+        </div>
+      </section>
+      <aside class="certificate-note" aria-label="Thông tin IPA chưa ký"><svg aria-hidden="true"><use href="#shield"/></svg><div><strong>IPA chưa ký</strong><p>Build này không kèm certificate hoặc provisioning profile. Muốn cài lên iPhone, hãy ký ứng dụng bằng Apple Developer team của bạn và profile khớp với bundle ID.</p></div><a class="certificate-label" href="https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices" target="_blank" rel="noopener">APPLE DOCS ↗</a></aside>
+      <section class="faq section-block" aria-labelledby="faq-title">
+        <div class="faq-intro"><span class="eyebrow">CẦN THÊM THÔNG TIN?</span><h2 id="faq-title">Giải đáp nhanh.</h2><p>Build trên Codemagic và dùng IPA chưa ký.</p></div>
+        <div class="faq-items">
+          <details><summary>Tôi tải file IPA ở đâu?<svg aria-hidden="true"><use href="#plus"/></svg></summary><p>Sau khi workflow hoàn tất trong Codemagic, mở build và tải <strong>ChienBinhVegeta-unsigned.ipa</strong> trong phần Artifacts.</p></details>
+          <details><summary>IPA chưa ký có cài trực tiếp lên iPhone được không?<svg aria-hidden="true"><use href="#plus"/></svg></summary><p>Chưa được. iPhone cần ứng dụng có chữ ký hợp lệ. Hãy ký bằng Apple Developer team và provisioning profile phù hợp trước khi cài.</p></details>
+          <details><summary>Có cần certificate trên Codemagic không?<svg aria-hidden="true"><use href="#plus"/></svg></summary><p>Không. Workflow này tải Git LFS, build cho thiết bị iOS và đóng gói IPA với code signing tắt. Chứng chỉ chỉ cần khi bạn muốn cài hoặc phát hành ứng dụng.</p></details>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><a class="footer-brand" href="#">VEGETA<span>iOS EDITION</span></a><p>Chiến Binh Vegeta <span>·</span> IPA chưa ký</p><a href="https://github.com/AnhhPhuong06/Vegeta" target="_blank" rel="noopener">Xem mã nguồn <span aria-hidden="true">↗</span></a></footer>
+  </div>
+  <div class="mobile-install" aria-label="Mở Codemagic"><div><img src="assets/app-icon.png" width="38" height="38" alt=""><span><strong>ChienBinhVegeta</strong><small>iOS · unsigned IPA</small></span></div><a class="button button-primary" href="https://codemagic.io/apps">Mở Codemagic<svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
+  <script src="app.js" defer></script>
 </body>
 </html>

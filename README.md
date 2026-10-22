@@ -1,16 +1,17 @@
-# ChienBinhVegeta — iOS
+# ChienBinhVegeta — unsigned iOS IPA
 
-Unity iOS export, including the IL2CPP toolchain and Xcode project.
+Unity iOS export and Xcode project. The Codemagic workflow builds an **unsigned** device IPA without requesting signing credentials.
 
-- [Install on iPhone](https://anhhphuong06.github.io/Vegeta/)
-- [Download signed IPA](https://github.com/AnhhPhuong06/Vegeta/releases/download/ios-20261022/ChienBinhVegeta-signed.ipa)
+- [Build instructions](https://anhhphuong06.github.io/Vegeta/#huong-dan)
+- [Open Codemagic](https://codemagic.io/apps)
+- [View this repository](https://github.com/AnhhPhuong06/Vegeta)
 
-The enterprise provisioning profile for this release expires on **5 November 2026**.
+## Build with Codemagic
 
-## Build
+1. Add this GitHub repository to your Codemagic account.
+2. Select the `vegeta-ios-unsigned` workflow and start a build.
+3. Download `ChienBinhVegeta-unsigned.ipa` in the build's Artifacts section.
 
-Clone with Git LFS installed, then open `Unity-iPhone.xcodeproj` on a Mac with Xcode. The library `Libraries/libiPhone-lib.a` is stored with Git LFS.
+The workflow runs Xcode 16.4, downloads the Unity IL2CPP library from Git LFS, and builds the `Unity-iPhone` scheme for `iphoneos` with code signing disabled. No Apple certificate, provisioning profile, or password is needed for the build.
 
-The **Build signed iOS IPA** GitHub Actions workflow can also be started manually. Configure `IOS_P12_BASE64`, `IOS_PROFILE_BASE64`, and `IOS_P12_PASSWORD` as repository secrets before running it. The workflow uses the bundle identifier permitted by the supplied provisioning profile and verifies the resulting signature.
-
-Signing credentials are excluded from version control.
+An unsigned IPA is not ready to install on an iPhone. To run the app on a device, sign it using an Apple Developer team, a matching bundle ID, and the appropriate provisioning profile. See [Apple's instructions for distributing apps to registered devices](https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices).

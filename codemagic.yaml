@@ -1,0 +1,33 @@
+workflows:
+  vegeta-ios-unsigned:
+    name: ChienBinhVegeta iOS unsigned IPA
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    environment:
+      xcode: 16.4.x
+      vars:
+        XCODE_PROJECT: Unity-iPhone.xcodeproj
+        XCODE_SCHEME: Unity-iPhone
+    scripts:
+      - name: Initialize Git LFS
+        script: |
+          git lfs install --skip-smudge
+          git lfs pull --include="Libraries/libiPhone-lib.a"
+      - name: Prepare Unity IL2CPP
+        script: |
+          set -euo pipefail
+          cd "$CM_BUILD_DIR"
+          chmod +x Il2CppOutputProject/IL2CPP/build/deploy_*/il2cpp
+          find Il2CppOutputProject/IL2CPP/build -name bee_backend -type f -exec chmod +x {} \;
+      - name: Build and package unsigned IPA
+        script: bash scripts/build-unsigned-ipa.sh
+    artifacts:
+      - build/ipa/ChienBinhVegeta-unsigned.ipa
+      - /tmp/xcodebuild_logs/*.log
