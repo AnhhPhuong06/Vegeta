@@ -1,0 +1,51 @@
+name: Build and release unsigned iOS IPA
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unsigned-ipa:
+    name: Build and publish unsigned IPA
+    runs-on: macos-15
+    timeout-minutes: 120
+    env:
+      CM_BUILD_DIR: ${{ github.workspace }}
+      XCODE_PROJECT: Unity-iPhone.xcodeproj
+      XCODE_SCHEME: Unity-iPhone
+
+    steps:
+      - name: Check out repository and Git LFS files
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Pull Unity iOS library from Git LFS
+        run: git lfs pull --include="Libraries/libiPhone-lib.a"
+
+      - name: Prepare Unity IL2CPP tools
+        run: |
+          set -euo pipefail
+          chmod +x Il2CppOutputProject/IL2CPP/build/deploy_*/il2cpp
+          find Il2CppOutputProject/IL2CPP/build -name bee_backend -type f -exec chmod +x {} \;
+
+      - name: Build unsigned IPA
+        run: bash scripts/build-unsigned-ipa.sh
+
+      - name: Upload IPA build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ChienBinhVegeta-unsigned-IPA
+          path: build/ipa/ChienBinhVegeta-unsigned.ipa
+          if-no-files-found: error
+
+      - name: Publish public GitHub Release download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="vegeta-unsigned-${GITHUB_RUN_ID}"
+          gh release create "$TAG" build/ipa/ChienBinhVegeta-unsigned.ipa \
+            --title "Chiến Binh Vegeta iOS unsigned build ${GITHUB_RUN_NUMBER}" \
+            --notes "Unsigned IPA. Sign it with your own Apple Developer team before installing on an iPhone."
